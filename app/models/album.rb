@@ -3,6 +3,7 @@ class Album < ApplicationRecord
 
   has_one :albums_artist
   has_one :artist, through: :albums_artist
+  has_many :tracks, -> { order(:track_number) }
 
   MAJOR_COLUMNS = %i[album_id title label]
 
