@@ -4,4 +4,6 @@ class Album < ApplicationRecord
   MAJOR_COLUMNS = %i[album_id title label]
 
   scope :select_major, -> { select(MAJOR_COLUMNS) }
+
+  scope :local, -> { where("source = 0") }
 end
