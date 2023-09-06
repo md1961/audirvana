@@ -12,4 +12,8 @@ class Album < ApplicationRecord
   scope :local, -> { where("source = 0") }
 
   scope :done, -> { where("label LIKE '%done%'") }
+
+  def genre
+    tracks.map(&:genre).uniq.join(', ')
+  end
 end
