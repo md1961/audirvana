@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
 
   def index
-    @albums = Album.local
+    @albums = Album.local.sort
   end
 end
