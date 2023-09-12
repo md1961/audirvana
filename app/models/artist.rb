@@ -14,6 +14,18 @@ class Artist < ApplicationRecord
     !albums.empty?
   end
 
+  def classical?
+    genres == %w[Classical]
+  end
+
+  def japan?
+    genres == %w[Japan]
+  end
+
+  def oversea?
+    !classical? && !japan?
+  end
+
   def genres
     albums.flat_map(&:genre).uniq.sort
   end
