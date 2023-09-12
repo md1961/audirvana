@@ -3,6 +3,8 @@ class Artist < ApplicationRecord
 
   has_many :albums_artists
   has_many :albums, through: :albums_artists
+  has_many :tracks_artists
+  has_many :tracks, through: :tracks_artists
 
   MAJOR_COLUMNS = %i[artist_id name mb_name]
 
