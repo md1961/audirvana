@@ -1,0 +1,24 @@
+body {
+  font-family: "メイリオ", sans-serif;
+  font-size: 12px;
+}
+
+
+td, th {
+  padding-top:    1px;
+  padding-bottom: 1px;
+  padding-left:   5px;
+  padding-right:  5px;
+}
+
+.numeric {
+  text-align: right;
+}
+
+td.wide_link a {
+  display: block;
+}
+
+tbody tr:hover {
+  background-color: cyan;
+}
