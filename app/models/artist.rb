@@ -9,4 +9,8 @@ class Artist < ApplicationRecord
   MAJOR_COLUMNS = %i[artist_id name mb_name]
 
   scope :select_major, -> { select(MAJOR_COLUMNS) }
+
+  def has_album?
+    !albums.empty?
+  end
 end
