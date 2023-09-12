@@ -13,4 +13,8 @@ class Artist < ApplicationRecord
   def has_album?
     !albums.empty?
   end
+
+  def genres
+    albums.flat_map(&:genre).uniq.sort
+  end
 end
