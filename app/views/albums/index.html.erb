@@ -1,10 +1,18 @@
 <div class="albums_index">
 
 <div class="actions">
-  <%= select_tag :genre, options_for_select(
-                           Genre.all.map(&:name),
-                           selected: @genre.name
-                         ) %>
+  <%= hidden_field_tag :genre, @genre.name %>
+  <%= hidden_field_tag :label, @label.name %>
+
+  <%= select_tag :genre_select, options_for_select(
+                                  Genre.all.map(&:name),
+                                  selected: @genre.name
+                                ) %>
+
+  <%= select_tag :label_select, options_for_select(
+                                  Albums::Label.all.map(&:name),
+                                  selected: @label.name
+                                ) %>
 </div>
 
 <table>

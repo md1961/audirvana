@@ -1,9 +1,21 @@
 (function() {
   $(function() {
+    const filter_by = function(genre, label) {
+      location.href = `albums?genre=${genre}&label=${label}`
+    };
+
     if ($('div.albums_index').length > 0) {
-      $('select#genre').on('change', function(e) {
-        const genre = e.target.value;
-        location.href = "albums?genre=" + genre
+      let genre = $('#genre')[0].value;
+      let label = $('#label')[0].value;
+
+      $('#genre_select').on('change', function(e) {
+        genre = e.target.value;
+        filter_by(genre, label)
+      });
+
+      $('#label_select').on('change', function(e) {
+        label = e.target.value;
+        filter_by(genre, label)
       });
     }
   });
