@@ -19,6 +19,12 @@ class Album < ApplicationRecord
     local.pluck(:label).compact.flat_map(&:split).uniq
   end
 
+  def labels
+    (label&.split || []).map { |name|
+      Albums::Label.find_by_name(name)
+    }
+  end
+
   def genre
     tracks.map(&:genre).uniq.join(', ')
   end
