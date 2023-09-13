@@ -15,15 +15,20 @@
                                 ) %>
 </div>
 
-<table>
-  <tbody>
-    <% @albums.each do |album| -%>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.artist&.name %></td>
-      </tr>
-    <% end -%>
-  </tbody>
-</table>
+<% if @albums.empty? -%>
+  <div class="message">No albums</div>
+<% else -%>
+  <table>
+    <tbody>
+      <% @albums.each do |album| -%>
+        <tr>
+          <td><%= album.title %></td>
+          <td><%= album.artist&.name %></td>
+          <td><%= album.artist&.sort_name %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+<% end -%>
 
 </div>
