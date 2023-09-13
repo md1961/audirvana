@@ -1,5 +1,12 @@
 <div class="albums_index">
 
+<div class="actions">
+  <%= select_tag :genre, options_for_select(
+                           Genre.all.map(&:name),
+                           selected: @genre.name
+                         ) %>
+</div>
+
 <table>
   <tbody>
     <% @albums.each do |album| -%>
