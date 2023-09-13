@@ -26,6 +26,6 @@ class Album < ApplicationRecord
   protected
 
     def ordering
-      [artist&.sort_name || '', sort_title || '']
+      [artist || Artist::NIL, sort_title || '']
     end
 end

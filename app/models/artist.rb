@@ -1,4 +1,6 @@
 class Artist < ApplicationRecord
+  include Comparable
+
   self.primary_key = :artist_id
 
   has_many :albums_artists
@@ -9,6 +11,11 @@ class Artist < ApplicationRecord
   MAJOR_COLUMNS = %i[artist_id name mb_name]
 
   scope :select_major, -> { select(MAJOR_COLUMNS) }
+
+  NIL = Artist.new
+  def NIL.ordering
+    ''
+  end
 
   def has_album?
     !albums.empty?
@@ -29,4 +36,14 @@ class Artist < ApplicationRecord
   def genres
     albums.flat_map(&:genre).uniq.sort
   end
+
+  def <=>(other)
+    ordering <=> (other&.ordering || '')
+  end
+
+  protected
+
+    def ordering
+      sort_name&.downcase || ''
+    end
 end
