@@ -19,6 +19,12 @@ class Album < ApplicationRecord
     local.pluck(:label).compact.flat_map(&:split).uniq
   end
 
+  def release_year
+    release_date.then { |julian_day|
+      julian_day && Date.jd(julian_day + 0.5).year
+    }
+  end
+
   def labels
     (label&.split || []).map { |name|
       Albums::Label.find_by_name(name)
