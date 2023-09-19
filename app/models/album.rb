@@ -25,6 +25,10 @@ class Album < ApplicationRecord
     }
   end
 
+  def obj_year
+    Albums::Year.new(self)
+  end
+
   def labels
     (label&.split || []).map { |name|
       Albums::Label.find_by_name(name)
