@@ -8,4 +8,6 @@ class Track < ApplicationRecord
   MAJOR_COLUMNS = %i[track_id title genre]
 
   scope :select_major, -> { select(MAJOR_COLUMNS) }
+
+  scope :local, -> { where(source: 0) }
 end

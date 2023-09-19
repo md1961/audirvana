@@ -11,7 +11,7 @@ class Album < ApplicationRecord
 
   scope :select_major, -> { select(MAJOR_COLUMNS) }
 
-  scope :local, -> { where("source = 0") }
+  scope :local, -> { where(source: 0) }
 
   scope :done, -> { where("label LIKE '%done%'") }
 
