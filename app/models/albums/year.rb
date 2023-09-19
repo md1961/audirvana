@@ -15,6 +15,10 @@ class Albums::Year
     [@year_from_album] == @years_from_tracks
   end
 
+  def contradicting?
+    @year_from_album && !@years_from_tracks.empty? && !@years_from_tracks.include?(@year_from_album)
+  end
+
   def value
     @year_from_album || @years_from_tracks.max
   end
