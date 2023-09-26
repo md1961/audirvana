@@ -4,4 +4,12 @@ div.albums_index {
     margin-left:   5px;
     margin-bottom: 5px;
   }
+
+  td.year {
+    white-space: nowrap;
+
+    span.not_strict::after {
+      content: '*';
+    }
+  }
 }

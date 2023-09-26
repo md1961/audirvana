@@ -21,10 +21,16 @@
   <table>
     <tbody>
       <% @albums.each do |album| -%>
+        <% obj_year = album.obj_year -%>
         <tr>
           <td><%= album.title %></td>
           <td><%= album.artist&.name %></td>
           <td><%= album.artist&.sort_name %></td>
+          <td class="year">
+            <span class="<%= obj_year.strict? ? '' : 'not_strict' %>">
+              <%= obj_year.value %>
+            </span>
+          </td>
         </tr>
       <% end -%>
     </tbody>
