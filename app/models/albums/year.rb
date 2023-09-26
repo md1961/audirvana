@@ -1,4 +1,5 @@
 class Albums::Year
+  include Comparable
 
   def initialize(album)
     raise ArgumentError, "Argument must be an Album" unless album.is_a?(Album)
@@ -26,4 +27,20 @@ class Albums::Year
   def values
     (@years_from_tracks + [@year_from_album]).uniq.compact.sort
   end
+
+  def <=>(other)
+    ordering <=> other.ordering
+  end
+
+  protected
+
+    def ordering
+      if strict?
+        @year_from_album
+      elsif !@years_from_tracks.empty?
+        @years_from_tracks.sum.fdiv(@years_from_tracks.size)
+      else
+        9999
+      end
+    end
 end
