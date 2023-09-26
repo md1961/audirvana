@@ -43,7 +43,9 @@ class Artist < ApplicationRecord
 
   protected
 
+    using StringExtension
+
     def ordering
-      sort_name&.downcase || ''
+      sort_name&.downcase&.to_hiragana || ''
     end
 end
