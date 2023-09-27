@@ -10,7 +10,7 @@
                                 ) %>
 
   <%= select_tag :label_select, options_for_select(
-                                  Albums::Label.all.map(&:name),
+                                  Albums::Label.all.sort.map(&:name),
                                   selected: @label.name
                                 ) %>
 </div>
