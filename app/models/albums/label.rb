@@ -1,4 +1,6 @@
 class Albums::Label
+  include Comparable
+
   attr_reader :name
 
   NAME_FOR_ALL = 'All'
@@ -25,7 +27,19 @@ class Albums::Label
     albums.find_all { |album| album.labels.include?(self) }
   end
 
+  def <=>(other)
+    ordering <=> other.ordering
+  end
+
   def to_s
     name
   end
+
+  protected
+
+    ORDERINGS_BY_NAME = [NAME_FOR_ALL] + %w[done CD NB NSB NSG NG]
+
+    def ordering
+      ORDERINGS_BY_NAME.index(name) || 9999
+    end
 end
