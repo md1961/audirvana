@@ -20,9 +20,10 @@
 <% else -%>
   <table>
     <tbody>
-      <% @albums.each do |album| -%>
+      <% @albums.each.with_index(1) do |album, index| -%>
         <% obj_year = album.obj_year -%>
         <tr>
+          <td class="numeric"><%= index %></td>
           <td><%= album.title %></td>
           <td><%= album.artist&.name %></td>
           <td><%= album.artist&.sort_name %></td>
